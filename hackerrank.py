@@ -46,6 +46,27 @@ def get_index(s, lst):
         return 0
 
 
+def sortedInsert(head, data):
+    if not head.data:
+        head.data = data
+    elif data < head.data:
+        new_head = DoublyLinkedListNode(data)
+        new_head.next = head
+        head.prev = new_head
+        return new_head
+    cur = head
+    while cur.next:
+        if data < cur.next.data:
+            break
+        else:
+            cur = cur.next
+    saved = cur.next
+    cur.next = DoublyLinkedListNode(data)
+    cur.next.prev = cur
+    cur.next.next = saved
+    return head
+
+
 
 
 
